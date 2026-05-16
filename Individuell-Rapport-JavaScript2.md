@@ -1,5 +1,5 @@
 # Individuell rapport - Receptapplikation
-**Namn: Sanel Osmanovic**
+**Namn: Sanel Osmanovic**  
 **Kurs: JavaScript2**
 
 ---
@@ -11,28 +11,25 @@
 
 JSX står för JavaScript XML och man kan säga att det är som ett "extraspråk" för JavaScript som man brukar använda i React. Man kombinerar helt enkelt JavaScript och HTML. Det kan ofta se ut som HTML men det omvandlas till JavaScript och man skriver dem i JavaScript-filerna. Att använda JSX gör det enklare att bygga dynamiskt.
 
-Det finns några skillnader mellan JSX och vanlig HTML men de enklaste och tydligaste skillnaderna är:
-**- Parent element:** Man kan inte returnera två `<h1>`-taggar bredvid varandra utan att lägga in dem i en gemensam `<div>` eller en fragment-tagg `(<> ... </>)`
+Det finns några skillnader mellan JSX och vanlig HTML men de enklaste och tydligaste skillnaderna är:  
+**- Parent element:** Man kan inte returnera två `<h1>`-taggar bredvid varandra utan att lägga in dem i en gemensam `<div>` eller en fragment-tagg `(<> ... </>)`.  
 **- Stängningstaggar:** I HTML kan man använda `<img>` eller `<input>` utan att stänga men i JSX är det ett krav att de måste stängas med ett snedstreck `<img />` eller `<input />`.
 
 ### 2. Vad är en component i React och varför använder vi components? ###
 
-**Svar**
 Enkelt förklarat är en component något vi kan skapa för att återanvända kod. Istället för att skriva samma kod på flera olika ställen så skapar man en component som man återanvänder. T.ex. Om jag har en snygg knapp med hover-effekt som jag vill använda på flera ställen på min sida, då skapar jag en component som jag sedan använder på de ställen jag vill. Det är alltså en JavaScript-funktion som returnerar JSX.
 Fördelen med att använda components är just att den är återanvändbar, enklare att underhålla samt tydligare ansvar. Det som är viktigt dock är att det måste börja med en stor bokstav t.ex. `UserButton`.
 
 ### 3. Förklara skillnaden mellan props och state. ###
 
-Både props och state hanterar data i en component men det används på olika sätt.
-**- Props:** Är data som skickas till en component utifrån. Det är den övre component (föräldern) som äger datan och sedan refererar till en annan component (barnet). Det viktiga att känna till med props är att de enbart är read-only. Vilket innebär att en component inte kan ändra sina egna props.
-
+Både props och state hanterar data i en component men det används på olika sätt.  
+**- Props:** Är data som skickas till en component utifrån. Det är den övre component (föräldern) som äger datan och sedan refererar till en annan component (barnet). Det viktiga att känna till med props är att de enbart är read-only. Vilket innebär att en component inte kan ändra sina egna props.  
 **- State:** Är data som component hanterar själv. Man kan säga att det är components egna minne. Datan i en component kan ändras och oftast efter att användaren gör något t.ex. klickar på en knapp eller skriver i ett fält. State triggar en om-rendering av sidan.
 
 ### 4. Vad gör `useState` och hur använder vi det? Ge ett exempel. ###
 
-Eftersom props är read-only och det är statisk data så behöver vi göra det mer interaktivt. Vi kanske vill kunna klicka vidare på en hemsida, vi kanske vill ha ett fält där man kan skriva någonting. Det är här `useState` kommer in i bilden. Vanliga JavaScript-variabler glömmer bort sina värden från en component så fort de ändras och de nollställs vid en omrendering. När vi anropar `useState` returnerar den alltid en array med två saker:
-
-1. En variabel som håller det nuvarande värdet.
+Eftersom props är read-only och det är statisk data så behöver vi göra det mer interaktivt. Vi kanske vill kunna klicka vidare på en hemsida, vi kanske vill ha ett fält där man kan skriva någonting. Det är här `useState` kommer in i bilden. Vanliga JavaScript-variabler glömmer bort sina värden från en component så fort de ändras och de nollställs vid en omrendering. När vi anropar `useState` returnerar den alltid en array med två saker:  
+1. En variabel som håller det nuvarande värdet.  
 2. En speciell funktion som vi använder för att uppdatera värdet. Då förstår React att sidan måste renderas om så att den nya datan visas.
 
 **Exempel:**
@@ -56,9 +53,8 @@ function Counter () {
 
 ### 5. Vad gör `useEffect` och varför behövs det? Ge ett exempel på när man använder det? ###
 
-Det är en funktion som används för att köra kod vid specifika tillfällen istället för att koden körs varje gång sidan ritas om. När man använder `useEffect` är det två saker man gör.
-
-1. Det är den kod som faktiskt ska köras, alltså funktionen.
+Det är en funktion som används för att köra kod vid specifika tillfällen istället för att koden körs varje gång sidan ritas om. När man använder `useEffect` är det två saker man gör.  
+1. Det är den kod som faktiskt ska köras, alltså funktionen.  
 2. En dependency array som talar om för React när funktionen ska köras igen. Om den till exempel är tom [] körs den bara en gång när sidan laddas.
 
 Ett exempel när `useEffect` behövs är om vi ska hämta data från ett externt API. Om vi lägger in kod som hämtar data från ett API direkt i components utan `useEffect`, skulle koden köras varje gång components renderas om. Om components renderas om 50 gånger skulle vi göra 50 API-anrop. Det kan göra att applikationen kraschar eller går långsamt.
